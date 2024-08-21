@@ -57,6 +57,7 @@
         gridCel.ontouchmove = (e) => {
           console.log("touchmove");
           document.querySelector(".event").innerHTML = "TOUCH MOVE";
+          e.target.classList.toggle("colored");
         };
         gridEl.appendChild(gridCel);
       }
