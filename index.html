@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .grid {
+        height: 500px;
+        width: 500px;
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+      }
+
+      .cel {
+        border: 1px solid black;
+      }
+
+      .colored {
+        background: red;
+      }
+    </style>
+    <title>PaintGrid</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="grid"></div>
+
+      <h5>EventFired:<span class="event"></span></h5>
+    </div>
+
+    <script>
+      let gridEl = document.querySelector(".grid");
+
+      for (let i = 0; i < 200; i++) {
+        let gridCel = document.createElement("div");
+        gridCel.className = "cel";
+        gridCel.onmouseenter = (e) => {
+          e.target.classList.toggle("colored");
+        };
+        gridCel.ontouchstart = (e) => {
+          console.log("touch start!!!");
+          document.querySelector(".event").innerHTML = "TOUCH START";
+        };
+
+        gridCel.ontouchend = (e) => {
+          console.log("touch end");
+          document.querySelector(".event").innerHTML = "TOUCH END";
+        };
+
+        gridCel.ontouchmove = (e) => {
+          console.log("touchmove");
+          document.querySelector(".event").innerHTML = "TOUCH MOVE";
+        };
+        gridEl.appendChild(gridCel);
+      }
+    </script>
+  </body>
+</html>
